@@ -6,20 +6,23 @@ import {
   LogIn, LogOut, RefreshCw, ArrowLeftRight, Clock, FileText, User, ChevronRight, MapPin,
 } from "lucide-react";
 import { getTodayAttendance, getEmployee, addAttendance } from "@/lib/storage";
+import { getSession } from "@/lib/auth";
 import type { AttendanceRecord } from "@/lib/types";
 import { format } from "date-fns";
 import { id as localeId } from "date-fns/locale";
 
 export default function HomePage() {
   const [today, setToday] = useState<AttendanceRecord[]>([]);
-  const [employee, setEmployee] = useState(getEmployee());
+  const [displayName, setDisplayName] = useState("PAK MIRO");
   const [now, setNow] = useState(new Date());
   const [loading, setLoading] = useState<"IN" | "OUT" | null>(null);
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
     setToday(getTodayAttendance());
-    setEmployee(getEmployee());
+    const session = getSession();
+    const emp = getEmployee();
+    setDisplayName(session?.displayName || emp.name || "PAK MIRO");
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
@@ -53,10 +56,10 @@ export default function HomePage() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <p className="text-kai-200 text-sm">Selamat datang,</p>
-            <h1 className="text-xl font-bold tracking-tight">{employee.name}</h1>
+            <h1 className="text-xl font-bold tracking-tight">{displayName}</h1>
           </div>
           <div className="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold">
-            {employee.name.charAt(0)}
+            {displayName.charAt(0)}
           </div>
         </div>
         <div className="bg-white/10 backdrop-blur rounded-2xl p-4 flex items-center justify-between">
