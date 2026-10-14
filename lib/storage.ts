@@ -119,13 +119,13 @@ export function addOvertime(
 
 const DEFAULT_EMPLOYEE: Employee = {
   id: "emp-001",
-  name: "Budi Santoso",
+  name: "PAK MIRO",
   nik: "3201234567890001",
-  position: "Crew Outlet",
-  department: "Operasional",
-  joinDate: "2025-03-15",
+  position: "CEO",
+  department: "Manajemen",
+  joinDate: "2024-01-01",
   phone: "081234567890",
-  email: "budi@geprekin.id",
+  email: "miro@geprekin.id",
 };
 
 export function getEmployee(): Employee {
