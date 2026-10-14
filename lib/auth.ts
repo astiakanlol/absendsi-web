@@ -10,6 +10,12 @@ const COMPANY_USERS = [
     displayName: "PAK MIRO",
     role: "CEO",
   },
+  {
+    username: "GUNADI",
+    password: "Gunadi",
+    displayName: "Gordon Gunadi",
+    role: "Admin",
+  },
 ];
 
 export interface Session {
