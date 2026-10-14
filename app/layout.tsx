@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import BottomNav from "@/components/BottomNav";
+import AppShell from "@/components/AppShell";
 
 export const metadata: Metadata = {
   title: "ABSENDSI — Geprekin",
@@ -28,10 +28,7 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className="min-h-screen">
-        <div className="mx-auto max-w-lg min-h-screen bg-gray-50 relative pb-20">
-          {children}
-          <BottomNav />
-        </div>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );
